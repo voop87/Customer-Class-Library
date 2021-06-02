@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="10.2.2" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\CustomerClassLibrary\CustomerClassLibrary.csproj" />
   </ItemGroup>
 

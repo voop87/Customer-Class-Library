@@ -4,25 +4,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using FluentValidation;
 
-namespace CustomerClassLibrary
+namespace CustomerClassLibrary 
 {
-    public class AddressValidator
+    public class AddressValidator : AbstractValidator<Address>
     {
-        public List<string> ValidateAdress(Address anyAddress)
-        {
-            var result = new List<string>();
-            var results = new List<ValidationResult>();
-            var context = new ValidationContext(anyAddress);
 
-            if (!Validator.TryValidateObject(anyAddress, context, results, true))
-            {
-                foreach (var error in results)
-                {
-                    result.Add(error.ErrorMessage);
-                }
-            }
-            return result;
+        public AddressValidator()
+        {
+            RuleFor(Adrress => Adrress.AdressLine).NotEmpty().WithMessage("The field is required").
+                MaximumLength(100).WithMessage("Maximum length is 100 characters");
+
+            RuleFor(Address => Address.AdressLine2).MaximumLength(100).WithMessage("Maximum length is 100 characters");
+
+            RuleFor(Address => Address.City).NotEmpty().WithMessage("The field is required").
+                MaximumLength(50).WithMessage("Maximum length is 50 characters");
+
+            RuleFor(Address => Address.PostalCode).NotEmpty().WithMessage("The field is required").
+                MaximumLength(6).WithMessage("Maximum length is 6 characters");
+
+            RuleFor(Address => Address.State).NotEmpty().WithMessage("The field is required").
+                MaximumLength(20).WithMessage("Maximum length is 20 characters");
+
+            RuleFor(Address => Address.Country).NotEmpty().WithMessage("The field is required").
+                Must(field => field == "USA" || field == "Canada").WithMessage("The field can be only USA or Canada");
         }
     }
 }
