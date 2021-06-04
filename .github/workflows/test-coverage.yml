@@ -3,9 +3,9 @@ name: Generate test coverage report.
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master, feature ]
   pull_request:
-    branches: [ main ]
+    branches: [ master, feature ]
 
 jobs:
   build:
@@ -18,7 +18,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 3.1.x
+        dotnet-version: 5.x.x
 
     - name: Restore dependencies
       run: dotnet restore
@@ -30,8 +30,7 @@ jobs:
       run: dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=TestResults/
     - uses: codecov/codecov-action@v1
       with:
-        token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
-        files: ./tests/Calculator.Test/TestResults/coverage.opencover.xml
+        files: ./tests/CustomerLibraryTests/TestResults/coverage.opencover.xml
         flags: unittests 
         name: codecov-umbrella
         fail_ci_if_error: true 
