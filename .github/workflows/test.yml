@@ -1,21 +1,36 @@
-name: Test Calculator
-on: [push]
+name: Generate test coverage report.
+
+on:
+  push:
+    branches: [ master, feature ]
+  pull_request:
+    branches: [ master, feature ]
 
 jobs:
-  test:
+  build:
+
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout 
-        uses: actions/checkout@v2
+    - uses: actions/checkout@v2
 
-      - name: Generate test coverage report
-        run: dotnet test --collect:"XPlat Code Coverage"
-      
-      - name: Upload test report
-        uses: actions/upload-artifact@v2
-        with:
-          name: test-report
-          path: ./CustomerLibraryTests/TestResults/**/coverage.cobertura.xml
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.x.x
 
-      
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Build
+      run: dotnet build --no-restore
+
+    - name: Test
+      run: dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=TestResults/
+    - uses: codecov/codecov-action@v1
+      with:
+        files: ./CustomerLibraryTests/TestResults/coverage.opencover.xml
+        flags: unittests 
+        name: codecov-umbrella
+        fail_ci_if_error: true 
+        verbose: true

@@ -5,11 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 
-namespace CustomerClassLibrary 
+namespace CustomerClassLibrary
 {
     public class Customer : Person
     {
-        [Required(ErrorMessage = "The field is required"), 
+        [Required(ErrorMessage = "The field is required"),
             MinLength(1, ErrorMessage = "Minimum length is 1 item")]
         public List<Address> AdressesList { get; set; }
 
@@ -21,7 +21,7 @@ namespace CustomerClassLibrary
                       ErrorMessage = "Email adress should be valid")]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "The field is required"), 
+        [Required(ErrorMessage = "The field is required"),
             MinLength(1, ErrorMessage = "Minimum length is 1 item")]
         public List<string> Note { get; set; }
 

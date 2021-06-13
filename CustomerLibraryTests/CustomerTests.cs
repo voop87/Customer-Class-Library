@@ -30,17 +30,16 @@ namespace CustomerLibraryTests
 
             var adress = new List<Address>();
 
-            customer.FirstName = "Harry";
-            customer.LastName = "Potter";
+            customer.FirstName = "Vasya";
+            customer.LastName = "Petrov";
             customer.PhoneNumber = "(605) 475-6961";
             customer.Email = "hogwards@mail.com";
             customer.AdressesList = adress;
             customer.TotalPurshasesAmount = 303000;
 
-            Assert.Equal("Harry", customer.FirstName);
-            Assert.Equal("Potter", customer.LastName);
+            Assert.Equal("Vasya", customer.FirstName);
+            Assert.Equal("Petrov", customer.LastName);
             Assert.Equal("(605) 475-6961", customer.PhoneNumber);
-            Assert.Equal("hogwards@mail.com", customer.Email);
             Assert.Equal("hogwards@mail.com", customer.Email);
             Assert.Equal(adress, customer.AdressesList);
             Assert.Equal(303000, customer.TotalPurshasesAmount);
@@ -51,5 +50,4 @@ namespace CustomerLibraryTests
 
         }
     }
-
 }
