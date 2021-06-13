@@ -26,8 +26,6 @@ namespace CustomerClassLibrary
             RuleFor(Customer => Customer.Note).NotEmpty().WithMessage("The field is required");
 
             RuleForEach(Customer => Customer.Note).NotNull().WithMessage("Minimum length is 1 item");
-
-
         }
     }
 }

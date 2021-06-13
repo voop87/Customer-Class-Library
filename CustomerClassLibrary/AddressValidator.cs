@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using FluentValidation;
 
-namespace CustomerClassLibrary 
+namespace CustomerClassLibrary
 {
     public class AddressValidator : AbstractValidator<Address>
     {
-
         public AddressValidator()
         {
             RuleFor(Adrress => Adrress.AdressLine).NotEmpty().WithMessage("The field is required").

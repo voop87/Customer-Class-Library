@@ -43,8 +43,8 @@ namespace CustomerLibraryTests
             address1.State = "12345678901234567890123456789012345678901234567890";
             address1.Country = "Russia";
 
-           ValidationResult results1 = addressValidator.Validate(address1);
-           List<Tuple<string, string>> errorList1 = new List<Tuple<string, string>>();
+            ValidationResult results1 = addressValidator.Validate(address1);
+            List<Tuple<string, string>> errorList1 = new List<Tuple<string, string>>();
 
             if (!results1.IsValid)
             {

@@ -29,7 +29,7 @@ namespace CustomerLibraryTests
 
             Assert.Equal("The field is required", errorList.FirstOrDefault(x => x.Item1 == "AdressesList").Item2);
             Assert.Equal("The field is required", errorList.FirstOrDefault(x => x.Item1 == "Note").Item2);
-            
+
 
             Customer customer1 = new Customer();
 
@@ -51,14 +51,11 @@ namespace CustomerLibraryTests
 
             }
 
-             Assert.Equal("Maximum length is 50 characters", errorList1.FirstOrDefault(x => x.Item1 == "FirstName").Item2);
-             Assert.Equal("The field is required", errorList1.FirstOrDefault(x => x.Item1 == "AdressesList").Item2);
-             Assert.Equal("Phone Number should have E.164 standart", errorList1.FirstOrDefault(x => x.Item1 == "PhoneNumber").Item2);
-             Assert.Equal("Email adrress should be valid", errorList1.FirstOrDefault(x => x.Item1 == "Email").Item2);
-             Assert.Equal("The field is required", errorList1.FirstOrDefault(x => x.Item1 == "Note").Item2);
-
-
-
+            Assert.Equal("Maximum length is 50 characters", errorList1.FirstOrDefault(x => x.Item1 == "FirstName").Item2);
+            Assert.Equal("The field is required", errorList1.FirstOrDefault(x => x.Item1 == "AdressesList").Item2);
+            Assert.Equal("Phone Number should have E.164 standart", errorList1.FirstOrDefault(x => x.Item1 == "PhoneNumber").Item2);
+            Assert.Equal("Email adrress should be valid", errorList1.FirstOrDefault(x => x.Item1 == "Email").Item2);
+            Assert.Equal("The field is required", errorList1.FirstOrDefault(x => x.Item1 == "Note").Item2);
         }
     }
 }
