@@ -2,9 +2,9 @@ name: Generate test coverage report.
 
 on:
   push:
-    branches: [ master, feature ]
+    branches: [ master ]
   pull_request:
-    branches: [ master, feature ]
+    branches: [ master ]
 
 jobs:
   build:
