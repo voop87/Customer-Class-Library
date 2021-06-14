@@ -1,11 +1,10 @@
-  
-name: Generate test coverage report.
+name: .NET
 
 on:
   push:
-    branches: [ feature ]
+    branches: [ master, feature ]
   pull_request:
-    branches: [ feature ]
+    branches: [ master, feature ]
 
 jobs:
   build:
@@ -14,22 +13,19 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.x.x
-
     - name: Restore dependencies
       run: dotnet restore
-
     - name: Build
       run: dotnet build --no-restore
-
     - name: Test
       run: dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=TestResults/
     - uses: codecov/codecov-action@v1
       with:
+        token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
         files: ./CustomerLibraryTests/TestResults/coverage.opencover.xml
         flags: unittests 
         name: codecov-umbrella
