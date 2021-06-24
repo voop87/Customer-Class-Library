@@ -20,10 +20,13 @@ namespace CustomerLibraryTests
         [Fact]
         public void ShouldBeAbleToCreateCustomer()
         {
+            var customerRepository = new CustomerRepository();
             var addressRepository = new AddressRepository();
-            var address = CreateMockAddress();
+            customerRepository.DeleteAll();
+            addressRepository.DeleteAll();
 
-            addressRepository.Create(address);
+            var customer = CreateMockCustomer();
+            var address = CreateMockAddress();
         }
 
         [Fact]
