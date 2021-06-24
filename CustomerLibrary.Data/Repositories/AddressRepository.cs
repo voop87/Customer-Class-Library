@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CustomerClassLibrary.Repositories
+namespace CustomerClassLibrary
 {
     public class AddressRepository : BaseRepository
     {

@@ -1,5 +1,4 @@
 ﻿using CustomerClassLibrary;
-using CustomerClassLibrary.Repositories;
 using System;
 using System.Data.SqlClient;
 using System.Collections.Generic;
