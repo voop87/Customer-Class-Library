@@ -57,12 +57,12 @@ namespace CustomerLibrary.Data
             return customerId;
         }
 
-        public Customer GetCustomer(int customerId)
+        public Customer GetCustomer(Customer customer)
         {
-            var customer = _customerRepository.Read(customerId);
-            customer.AdressesList = _addressRepository.ReadAll(customerId);
-            customer.Notes = _noteRepository.ReadAll(customerId);
-            return customer;
+            var readedCustomer = _customerRepository.Read(customer);
+            readedCustomer.AdressesList = _addressRepository.ReadAll(customer.CustomerId);
+            readedCustomer.Notes = _noteRepository.ReadAll(customer.CustomerId);
+            return readedCustomer;
 
         }
 

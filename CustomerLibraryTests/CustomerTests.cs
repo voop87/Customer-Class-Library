@@ -18,7 +18,7 @@ namespace CustomerLibraryTests
             Assert.Null(customer.LastName);
             Assert.Null(customer.PhoneNumber);
             Assert.Null(customer.Email);
-            Assert.Null(customer.Note);
+            Assert.Null(customer.Notes);
             Assert.Null(customer.TotalPurshasesAmount);
 
         }

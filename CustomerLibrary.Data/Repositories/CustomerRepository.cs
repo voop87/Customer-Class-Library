@@ -58,7 +58,7 @@ namespace CustomerClassLibrary
             return customerId;
         }
 
-        public Customer Read(int customerId)
+        public Customer Read(Customer customer)
         {
             using (var connection = GetConnection())
             {
@@ -67,7 +67,7 @@ namespace CustomerClassLibrary
 
                 var customerIdParam = new SqlParameter("@CustomerId", SqlDbType.Int)
                 {
-                    Value = customerId
+                    Value = customer.CustomerId
                 };
 
                 command.Parameters.Add(customerIdParam);

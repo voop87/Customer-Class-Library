@@ -10,7 +10,7 @@ namespace CustomerLibrary.Data
     {
         public int Create(TEntity entity);
 
-        public TEntity Read(int entityId);
+        public TEntity Read(TEntity entity);
 
         public List<TEntity> ReadAll();
 

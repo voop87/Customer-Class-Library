@@ -44,20 +44,20 @@ namespace CustomerLibrary.Data
             return newNoteId;
         }
 
-        public Note Read(int customerId)
+        public Note Read(Note note)
         {
             using var connection = GetConnection();
 
             var command = new SqlCommand("SELECT * FROM [dbo].[Notes] " +
-                        "WHERE CustomerId = @CustomerId", connection);
+                        "WHERE NoteId = @NoteId", connection);
 
 
-            var CustomerIdParam = new SqlParameter("@CustomerId", SqlDbType.Int)
+            var NoteIdParam = new SqlParameter("@NoteId", SqlDbType.Int)
             {
-                Value = customerId
+                Value = note.CustomerId
             };
 
-            command.Parameters.Add(CustomerIdParam);
+            command.Parameters.Add(NoteIdParam);
 
             using (var reader = command.ExecuteReader())
             {

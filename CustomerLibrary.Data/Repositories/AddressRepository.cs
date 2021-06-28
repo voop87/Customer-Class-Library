@@ -71,7 +71,7 @@ namespace CustomerClassLibrary
             return addressId;
         }
 
-        public Address Read(int addressId)
+        public Address Read(Address address)
         {
             using (var connection = GetConnection())
             {
@@ -80,7 +80,7 @@ namespace CustomerClassLibrary
 
                 var AddressIdParam = new SqlParameter("@AddressId", SqlDbType.Int)
                 {
-                    Value = addressId
+                    Value = address.AddressId
                 };
 
                 command.Parameters.Add(AddressIdParam);

@@ -43,7 +43,7 @@ namespace CustomerLibraryTests
             customerRepository.Create(customer);
             addressRepository.Create(address);
 
-            var createdAddress = addressRepository.Read("LA");
+            var createdAddress = addressRepository.Read(address);
 
             Assert.NotNull(createdAddress);
             Assert.Equal(address.State, createdAddress.State);
@@ -66,7 +66,7 @@ namespace CustomerLibraryTests
             address.City = "TEST";
             addressRepository.Update(address);
 
-            var createdAddress = addressRepository.Read("LA");
+            var createdAddress = addressRepository.Read(address);
 
             Assert.NotNull(createdAddress);
             Assert.Equal("TEST", createdAddress.City);
@@ -80,11 +80,11 @@ namespace CustomerLibraryTests
 
             addressRepository.Create(address);
 
-            var createdAddress = addressRepository.Read("LA");
+            var createdAddress = addressRepository.Read(address);
             Assert.NotNull(createdAddress);
 
-            addressRepository.Delete("LA");
-            var deletedCustomer = addressRepository.Read("LA");
+            addressRepository.Delete(address);
+            var deletedCustomer = addressRepository.Read(address);
             Assert.Null(deletedCustomer);
         }
 

@@ -37,7 +37,7 @@ namespace CustomerLibraryTests
 
             customerRepository.Create(customer);
 
-            var createdCustomer = customerRepository.Read("Petrov");
+            var createdCustomer = customerRepository.Read(customer);
 
             Assert.NotNull(createdCustomer);
             Assert.Equal(customer.FirstName, createdCustomer.FirstName);
@@ -53,7 +53,7 @@ namespace CustomerLibraryTests
             customer.FirstName = "TEST";
             customerRepository.Update(customer);
 
-            var createdCustomer = customerRepository.Read("Petrov");
+            var createdCustomer = customerRepository.Read(customer);
 
             Assert.NotNull(createdCustomer);
             Assert.Equal("TEST", createdCustomer.FirstName);
@@ -67,11 +67,11 @@ namespace CustomerLibraryTests
 
             customerRepository.Create(customer);
 
-            var createdCustomer = customerRepository.Read("Petrov");
+            var createdCustomer = customerRepository.Read(customer);
             Assert.NotNull(createdCustomer);
 
-            customerRepository.Delete("Petrov");
-            var deletedCustomer = customerRepository.Read("Petrov");
+            customerRepository.Delete(customer);
+            var deletedCustomer = customerRepository.Read(customer);
             Assert.Null(deletedCustomer);
         }
 

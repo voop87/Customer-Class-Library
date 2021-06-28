@@ -37,7 +37,7 @@ namespace CustomerLibraryTests
             customer1.AdressesList = new List<Address>();
             customer1.PhoneNumber = "";
             customer1.Email = "12345";
-            customer1.Note = new List<string>();
+            customer1.Notes = new List<Note>();
 
             ValidationResult results1 = customerValidator.Validate(customer1);
             List<Tuple<string, string>> errorList1 = new List<Tuple<string, string>>();

@@ -23,9 +23,9 @@ namespace CustomerClassLibrary
             RuleFor(Customer => Customer.Email).Matches(@"^(?("")(""[^""]+?""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +
                     @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9]{2,17}))$").WithMessage("Email adrress should be valid");
 
-            RuleFor(Customer => Customer.Note).NotEmpty().WithMessage("The field is required");
+            RuleFor(Customer => Customer.Notes).NotEmpty().WithMessage("The field is required");
 
-            RuleForEach(Customer => Customer.Note).NotNull().WithMessage("Minimum length is 1 item");
+            RuleForEach(Customer => Customer.Notes).NotNull().WithMessage("Minimum length is 1 item");
         }
     }
 }
