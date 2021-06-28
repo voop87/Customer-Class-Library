@@ -20,6 +20,8 @@ namespace CustomerClassLibrary
 
     public class Address
     {
+        public int AddressId { get; set; }
+        public int CustomerId { get; set; }
         public string AdressLine { get; set; }
 
         public string AdressLine2 { get; set; }
